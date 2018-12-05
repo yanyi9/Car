@@ -57,7 +57,7 @@
             return false;
         }
         var ws = plus.webview.currentWebview();
-        ws.setStyle({statusbar:{background:"#FFFFFF"}});
+        ws.setStyle({backgroundColorBottom:"#FFFFFF"});
         
         if (nav == "on") {
             embed = plus.webview.create(url, '', {
@@ -65,7 +65,7 @@
                 bottom: '50px',
                 kernel:"WKWebview",
                 scrollIndicator:"none",
-                statusbar:{background:"#FFFFFF"}
+                backgroundColorBottom:"#FFFFFF"
             });
             ws.append(embed);
         } else {
@@ -75,7 +75,7 @@
                 bottom: '0px',
                 kernel:"WKWebview",
                 scrollIndicator:"none",
-                statusbar:{background:"#FFFFFF"}
+                backgroundColorBottom:"#FFFFFF"
             });
             ws.append(embed);
         }
