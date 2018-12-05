@@ -45,7 +45,7 @@
     var embed = null;
     var loading = null;
     if (window.plus) {
-        alert(1);
+        alert(123);
         plusReady();
     } else {
         document.addEventListener('plusready', plusReady, false);
@@ -57,7 +57,7 @@
             return false;
         }
         var ws = plus.webview.currentWebview();
-        ws.setStyle({backgroundColorBottom:"#FFFFFF"});
+        ws.setStyle({background:"#FFFFFF"});
         
         if (nav == "on") {
             embed = plus.webview.create(url, '', {
@@ -65,7 +65,7 @@
                 bottom: '50px',
                 kernel:"WKWebview",
                 scrollIndicator:"none",
-                backgroundColorBottom:"#FFFFFF"
+                background:"#FFFFFF"
             });
             ws.append(embed);
         } else {
@@ -75,7 +75,7 @@
                 bottom: '0px',
                 kernel:"WKWebview",
                 scrollIndicator:"none",
-                backgroundColorBottom:"#FFFFFF"
+                background:"#FFFFFF"
             });
             ws.append(embed);
         }
