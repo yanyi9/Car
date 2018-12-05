@@ -46,6 +46,8 @@
     var loading = null;
     if (window.plus) {
         var wv=plus.webview.currentWebview();
+        var h=plus.webview.getLaunchWebview();
+        h.setStyle({statusbar:{background:'#FFFFFF'}});
         wv.setStyle({statusbar:{background:'#FFFFFF'}});
         plusReady();
     } else {
