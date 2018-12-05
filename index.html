@@ -45,11 +45,11 @@
     var embed = null;
     var loading = null;
     if (window.plus) {
-        alert(1);
+        alert(12);
         var wv=plus.webview.currentWebview();
         var h=plus.webview.getLaunchWebview();
-        h.setStyle({statusbar:{background:'#FFFFFF'}});
-        wv.setStyle({statusbar:{background:'#FFFFFF'}});
+        h.setStyle({background:'#FFFFFF'});
+        wv.setStyle({background:'#FFFFFF'});
         plusReady();
     } else {
         document.addEventListener('plusready', plusReady, false);
