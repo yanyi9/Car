@@ -1,79 +1,121 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>Car</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="./main.css" />
     <style>
-    .spinner {
-  margin: 100px auto 0;
-  width: 150px;
-  text-align: center;
-}
- 
-.spinner > div {
-  width: 30px;
-  height: 30px;
-  background-color: #67CF22;
- 
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
- 
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
- 
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
- 
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.0) }
-  40% { -webkit-transform: scale(1.0) }
-}
- 
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
-}
+        html,
+        body {
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .aui-bar-tab-label {
+            font-size: 0.8rem !important;
+        }
+        
+        .aui-bar-tab-item:active {
+            color: red !important;
+        }
     </style>
-	</head>
+</head>
 
-	<body>
-<div class="spinner">
-  <div class="bounce1"></div>
-  <div class="bounce2"></div>
-  <div class="bounce3"></div>
-</div>
-		<script type="text/javascript">
-			if (window.plus) {
-				plusReady()
-			} else {
-				document.addEventListener('plusready', plusReady, false)
-			}
+<body>
+    <footer class="aui-bar aui-bar-tab aui-hr" id="footer">
+        <div class="aui-bar-tab-item" id="home" onclick="home()">
+            <div class="aui-bar-tab-label">首页</div>
+        </div>
+        <div class="aui-bar-tab-item" id="re" onclick="reload()">
+            <div class="aui-bar-tab-label">刷新</div>
+        </div>
+        <div class="aui-bar-tab-item" id="go" onclick="goForward()">
+            <div class="aui-bar-tab-label">前进</div>
+        </div>
+        <div class="aui-bar-tab-item" id="back" onclick="goBack()">
+            <div class="aui-bar-tab-label">后退</div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript">
+    var embed = null;
+    var loading = null;
+    if (window.plus) {
+        plusReady()
+    } else {
+        document.addEventListener('plusready', plusReady, false)
+    }
 
-			function plusReady() { //这里是每次进入应用都会显示引导页，开发中要如何显示引导页视具体的情况而定。
-				var game = plus.webview.create('http://flash.7k7k.com/cms/cms10/20181006/1105585201/12/index.htm', "game");
-				game.setStyle({
-					"popGesture": "none"
-				});
-				game.show();
-			}
-			
-		</script>
-	</body>
+    function plusReady() { //这里是每次进入应用都会显示引导页，开发中要如何显示引导页视具体的情况而定。
+        if (show == "0") {
+            window.location.href = "https://lo16725032-4.m.icoc.bz/index.jsp";
+            return false;
+        }
+        var ws = plus.webview.currentWebview();
+        ws.setStyle({statusbar:{background:"#FFFFFF"}});
+        
+        if (nav == "on") {
+            embed = plus.webview.create(url, '', {
+                top: '0',
+                bottom: '50px',
+                kernel:"WKWebview",
+                scrollIndicator:"none",
+                statusbar:{background:"#FFFFFF"}
+            });
+            ws.append(embed);
+        } else {
+            document.getElementById('footer').style.display = "none";
+            embed = plus.webview.create(url, '', {
+                top: '0',
+                bottom: '0px',
+                kernel:"WKWebview",
+                scrollIndicator:"none",
+                statusbar:{background:"#FFFFFF"}
+            });
+            ws.append(embed);
+        }
+        embed.addEventListener('loading', function(e){
+            loading = plus.nativeUI.showWaiting("加载中...");
+        }, false);
+        embed.addEventListener('loaded', function(e){
+            if(loading!=null){
+                loading.close();
+            }
+        }, false);
+    }
+
+    function home() {
+       loading = plus.nativeUI.showWaiting("加载中...");
+       embed.loadURL(url);
+    }
+
+    function reload() {
+        loading = plus.nativeUI.showWaiting("加载中...");
+        embed.reload(true);
+
+    }
+    // 返回上次页面
+    function goBack() {
+        embed.canBack( function(e){
+            if(e.canBack==1){
+                loading = plus.nativeUI.showWaiting("加载中...");
+                embed.back();
+            }
+        });
+    }
+    // 前进到上次页面
+    function goForward() {
+        embed.canForward( function(e){
+            if(e.canForward==1){
+                loading = plus.nativeUI.showWaiting("加载中...");
+                embed.forward();
+            }
+        });
+    }
+</script>
 
 </html>
