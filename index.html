@@ -46,10 +46,6 @@
     var loading = null;
     if (window.plus) {
         alert(12);
-        var wv=plus.webview.currentWebview();
-        var h=plus.webview.getLaunchWebview();
-        h.setStyle({background:'#FFFFFF'});
-        wv.setStyle({background:'#FFFFFF'});
         plusReady();
     } else {
         document.addEventListener('plusready', plusReady, false);
