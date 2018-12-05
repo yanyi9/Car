@@ -45,9 +45,11 @@
     var embed = null;
     var loading = null;
     if (window.plus) {
-        plusReady()
+        var wv=plus.webview.currentWebview();
+        wv.setStyle({statusbar:{background:'#FFFFFF'}});
+        plusReady();
     } else {
-        document.addEventListener('plusready', plusReady, false)
+        document.addEventListener('plusready', plusReady, false);
     }
 
     function plusReady() { //这里是每次进入应用都会显示引导页，开发中要如何显示引导页视具体的情况而定。
