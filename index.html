@@ -56,8 +56,8 @@
             return false;
         }
         var ws = plus.webview.currentWebview();
-        ws.setStyle({statusbar:{background:'#700F87'}});
-        plus.navigator.setStatusBarStyle('light');
+        ws.setStyle({statusbar:{background:StatusBarColor}});
+        plus.navigator.setStatusBarStyle(StatusBarStyle);
         
         if (nav == "on") {
             embed = plus.webview.create(url, '', {
