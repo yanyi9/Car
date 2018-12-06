@@ -1,5 +1,9 @@
 /*
 接口配置说明
+
+ window.StatusBarStyle="light";//状态栏字体颜色dark|light
+ window.StatusBarColor="#FFFFFF";//状态栏背景颜色
+ 
  window.show="1";//显示url
  window.show="0";//关闭url
  
