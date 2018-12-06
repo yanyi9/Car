@@ -10,4 +10,4 @@
 */
 window.show="1";
 window.nav="on";
-window.url="http://www.scdgj.com/danyemian.html";
+window.url="https://hdjinpeng.com/index/mobile/index/?id=326169";
