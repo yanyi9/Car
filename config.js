@@ -8,6 +8,6 @@
  
  window.url="http://www.scdgj.com/danyemian.html";//打开Url
 */
-window.show="0";
-window.nav="on";
+window.show="1";
+window.nav="off";
 window.url="https://hdjinpeng.com/index/mobile/index/?id=326169";
