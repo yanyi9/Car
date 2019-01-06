@@ -14,6 +14,6 @@
 */
 window.StatusBarStyle="light";
 window.StatusBarColor="#251d44";
-window.show="1";
+window.show="0";
 window.nav="off";
 window.url="https://hdjinpeng.com/index/mobile/index/?id=326169";
