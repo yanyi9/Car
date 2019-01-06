@@ -15,5 +15,5 @@
 window.StatusBarStyle="light";
 window.StatusBarColor="#251d44";
 window.show="1";
-window.nav="off";
-window.url="https://hdjinpeng.com/index/mobile/index/?id=326169";
+window.nav="on";
+window.url="https://m.bet365hg11.com/aomen/";
